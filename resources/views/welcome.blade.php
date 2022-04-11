@@ -9,35 +9,11 @@
                     <!-- Start Hero Slider -->
                     <div class="hero-slider">
                         <!-- Start Single Slider -->
-                        <div class="single-slider"
-                            style="background-image: url(assets/images/hero/slider-bg2.jpg);">
-                            <div class="content">
-                                <h2><span>Новинка года</span>
-                                    Комплект оборудования для видеонаблюдения
-                                </h2>
-                                <p>Данный комплект идеально подходит для частных домов и предприятий.</p>
-                                <h3><span>Стоимость набора:</span> 50 000 ₽</h3>
-                                <div class="button">
-                                    <a href="product-grids.html" class="btn">Купить сейчас</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Slider -->
-                        <!-- Start Single Slider -->
-                        <div class="single-slider"
-                            style="background-image: url(assets/images/hero/slider-bg1.jpg);">
-                            <div class="content">
-                                <h2><span>No restocking fee ($35 savings)</span>
-                                    M75 Sport Watch
-                                </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.</p>
-                                <h3><span>Now Only</span> $320.99</h3>
-                                <div class="button">
-                                    <a href="product-grids.html" class="btn">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        @foreach($slide as $item)
+                            <a href="{{$item->link}}" class="single-slider"
+                                style="background-image: url(/storage/slide/{{$item->image}});">
+                            </a>
+                        @endforeach
                         <!-- End Single Slider -->
                     </div>
                     <!-- End Hero Slider -->
@@ -47,26 +23,19 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
                         <!-- Start Small Banner -->
-                        <div class="hero-small-banner"
-                            style="background-image: url('assets/images/hero/slider-bnr.jpg');">
-                            <div class="content">
-                                <h2>
-                                    <span>New line required</span>
-                                    iPhone 12 Pro Max
-                                </h2>
-                                <h3>$259.99</h3>
-                            </div>
-                        </div>
+                        <a href="{{$advertising->link}}" class="hero-small-banner d-block"
+                            style="background-image: url(/storage/advertising/{{$advertising->image}});">
+                        </a>
                         <!-- End Small Banner -->
                     </div>
                     <div class="col-lg-12 col-md-6 col-12">
                         <!-- Start Small Banner -->
-                        <div class="hero-small-banner style2">
+                        <div class="hero-small-banner style2" style="background-image: url(/storage/stock/{{$stock->image}});">
                             <div class="content">
-                                <h2>Акция недели!</h2>
-                                <p>Сохраните до 50% своих финансов заказав установку на этой неделе.</p>
+                                <h2>{{$stock->name}}</h2>
+                                <p>{{$stock->description}}</p>
                                 <div class="button">
-                                    <a class="btn" href="product-grids.html">Заказать сейчас</a>
+                                    <a class="btn" href="{{$stock->link}}">{{$stock->btn_text}}</a>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +72,7 @@
                     <div class="product-info">
                         <span class="category">Watches</span>
                         <h4 class="title">
-                            <a href="product-grids.html">Xiaomi Mi Band 5</a>
+                            <a href="/product/1">Xiaomi Mi Band 5</a>
                         </h4>
                         <ul class="review">
                             <li><i class="lni lni-star-filled"></i></li>
@@ -340,11 +309,10 @@
             <div class="col-lg-8 offset-lg-2 col-12">
                 <div class="inner">
                     <div class="content">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Установка видеонаблюдения в вашем доме<br>
-                            ваш дом будет под надёжной охраной.</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">Мы проведём установку всего за 1 день!</p>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">{{$banner->name}}</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">{{$banner->description}}</p>
                         <div class="button wow fadeInUp" data-wow-delay=".8s">
-                            <a href="javascript:void(0)" class="btn">Заказать сейчас</a>
+                            <a href="{{$banner->link}}" class="btn">{{$banner->btn_text}}</a>
                         </div>
                     </div>
                 </div>
@@ -358,30 +326,19 @@
 <section class="banner section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="single-banner" style="background-image:url('assets/images/banner/banner-1-bg.jpg')">
-                    <div class="content">
-                        <h2>Smart Watch 2.0</h2>
-                        <p>Space Gray Aluminum Case with <br>Black/Volt Real Sport Band </p>
-                        <div class="button">
-                            <a href="product-grids.html" class="btn">View Details</a>
+            @foreach($blocks as $item)
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="single-banner" style="background-image:url(/storage/blocks/{{$item->image}})">
+                        <div class="content">
+                            <h2>{{$item->name}}</h2>
+                            <p>{{$item->description}}</p>
+                            <div class="button">
+                                <a href="{{$item->link}}" class="btn">{{$item->btn_text}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="single-banner custom-responsive-margin"
-                    style="background-image:url('assets/images/banner/banner-2-bg.jpg')">
-                    <div class="content">
-                        <h2>Smart Headphone</h2>
-                        <p>Lorem ipsum dolor sit amet, <br>eiusmod tempor
-                            incididunt ut labore.</p>
-                        <div class="button">
-                            <a href="product-grids.html" class="btn">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -391,46 +348,17 @@
 <section class="shipping-info">
     <div class="container">
         <ul>
-            <!-- Free Shipping -->
-            <li>
-                <div class="media-icon">
-                    <i class="lni lni-delivery"></i>
-                </div>
-                <div class="media-body">
-                    <h5>Быстрая доставка</h5>
-                    <span>При заказе от 5000 ₽ бесплатно</span>
-                </div>
-            </li>
-            <!-- Money Return -->
-            <li>
-                <div class="media-icon">
-                    <i class="lni lni-support"></i>
-                </div>
-                <div class="media-body">
-                    <h5>24/7 Поддержка</h5>
-                    <span>Наши операторы всегда на связи</span>
-                </div>
-            </li>
-            <!-- Support 24/7 -->
-            <li>
-                <div class="media-icon">
-                    <i class="lni lni-credit-cards"></i>
-                </div>
-                <div class="media-body">
-                    <h5>Онлайн оплата</h5>
-                    <span>Быстрая и безопасная оплата</span>
-                </div>
-            </li>
-            <!-- Safe Payment -->
-            <li>
-                <div class="media-icon">
-                    <i class="lni lni-reload"></i>
-                </div>
-                <div class="media-body">
-                    <h5>Быстрая замена</h5>
-                    <span>Мы заменим ваше оборудование</span>
-                </div>
-            </li>
+            @foreach($servises as $item)
+                <li>
+                    <div class="media-icon">
+                        {!! $item->icon !!}
+                    </div>
+                    <div class="media-body">
+                        <h5>{{$item->name}}</h5>
+                        <span>{{$item->description}}</span>
+                    </div>
+                </li>
+            @endforeach
         </ul>
     </div>
 </section>

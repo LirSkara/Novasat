@@ -9,12 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
 
+    <!-- Иконки MDB bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/LineIcons.3.0.css" />
-    <link rel="stylesheet" href="assets/css/tiny-slider.css" />
-    <link rel="stylesheet" href="assets/css/glightbox.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/LineIcons.3.0.css" />
+    <link rel="stylesheet" href="/assets/css/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/css/glightbox.min.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 
 <body>
@@ -76,8 +79,8 @@
                             <div class="nav-hotline">
                                 <i class="lni lni-phone"></i>
                                 <h3>
-                                    <span style="font-size: 14px" class="fw-bold text-dark">г. Дербент, ул. Буйнакского, 68 Б</span>
-                                    <span>+7 (999) 888 77 66</span>
+                                    <span style="font-size: 14px" class="fw-bold text-dark">{{$your_data->city}}</span>
+                                    <span>{{$your_data->number}}</span>
                                 </h3>
                             </div>
                             <div class="navbar-cart">
@@ -232,18 +235,11 @@
                     <div class="nav-social">
                         <h5 class="title">Подпишитесь на нас:</h5>
                         <ul>
-                            <li>
-                                <a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"><i class="lni lni-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"><i class="lni lni-skype"></i></a>
-                            </li>
+                            @foreach($social_network as $item)
+                                <li>
+                                    <a href="{{$item->link}}">{!! $item->icon !!}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- End Nav Social -->
@@ -300,14 +296,14 @@
                             <!-- Single Widget -->
                             <div class="single-footer f-contact">
                                 <h3>Контактная информация</h3>
-                                <p class="phone">Телефон: +7 (999) 888 77 66</p>
+                                <p class="phone">Телефон: {{$your_data->number}}</p>
                                 <ul>
                                     График работы
                                     <li><span>Понедельник - Суббота: </span> с 9.00 - до 19.00</li>
                                     <li><span>Воскресенье: </span> с 10.00 - до 16.00</li>
                                 </ul>
                                 <p class="mail">
-                                    <a href="mailto:support@shopgrids.com">support@mail.com</a>
+                                    <a href="mailto:support@shopgrids.com">{{$your_data->mail}}</a>
                                 </p>
                             </div>
                             <!-- End Single Widget -->
@@ -389,10 +385,9 @@
                                 <li>
                                     <span>Подпишитесь на нас:</span>
                                 </li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
+                                @foreach($social_network as $item)
+                                    <li><a href="{{$item->link}}">{!! $item->icon !!}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -409,10 +404,10 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/tiny-slider.js"></script>
-    <script src="assets/js/glightbox.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/tiny-slider.js"></script>
+    <script src="/assets/js/glightbox.min.js"></script>
+    <script src="/assets/js/main.js"></script>
     <script type="text/javascript">
         //========= Hero Slider 
         tns({
